@@ -1,0 +1,41 @@
+@layer components {
+	.form {
+		&-input,
+		&-select,
+		&-textarea {
+			@apply w-full;
+		}
+	}
+
+	.umbraco-forms {
+		&-fieldset {
+			legend {
+				@apply text-h4;
+			}
+
+			& + & {
+				@apply mt-10;
+			}
+		}
+
+		&-field {
+			@apply mt-4;
+
+			&.checkbox {
+				@apply flex;
+
+				.umbraco-forms-label {
+					@apply order-1 ml-2;
+				}
+			}
+		}
+
+		&-indicator {
+			@apply text-small;
+		}
+	}
+
+	.field-validation-error {
+		@apply block mt-2 text-small text-error;
+	}
+}

@@ -1,0 +1,11 @@
+@mixin boost($count: 1) {
+	$selector: "";
+
+	@for $i from 1 through $count {
+		$selector: $selector + &;
+	}
+
+	&#{$selector} {
+		@content;
+	}
+}

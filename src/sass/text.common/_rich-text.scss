@@ -1,0 +1,123 @@
+@layer base {
+	.rich-text {
+		@apply break-words;
+
+		h1,
+		.h1 {
+			@apply text-h1;
+
+			+ {
+				* {
+					@apply mt-10 lg:mt-14;
+				}
+			}
+		}
+
+		h2,
+		.h2 {
+			@apply text-h2;
+
+			+ {
+				* {
+					@apply mt-7 lg:mt-12;
+				}
+			}
+		}
+
+		h3,
+		.h3 {
+			@apply text-h3;
+
+			+ {
+				* {
+					@apply mt-7 lg:mt-10;
+				}
+			}
+		}
+
+		h4,
+		.h4 {
+			@apply text-h4;
+
+			+ {
+				* {
+					@apply mt-6 lg:mt-7;
+				}
+			}
+		}
+
+		h5,
+		.h5 {
+			@apply text-h5;
+
+			+ {
+				* {
+					@apply mt-5 lg:mt-6;
+				}
+			}
+		}
+
+		h6,
+		.h6 {
+			@apply text-body font-bold;
+
+			+ {
+				* {
+					@apply mt-5 lg:mt-7;
+				}
+			}
+		}
+
+		p {
+			+ {
+				* {
+					@apply mt-5 lg:mt-7;
+				}
+			}
+		}
+
+		ul,
+		ol {
+			@apply pl-[2em] list-outside;
+
+			> li {
+				@apply mt-[0.5em];
+			}
+		}
+
+		ul {
+			@apply list-disc;
+		}
+
+		ol {
+			@apply list-decimal;
+		}
+
+		a {
+			@apply underline;
+		}
+
+		h1,
+		.h1,
+		h2,
+		.h2,
+		h3,
+		.h3,
+		h4,
+		.h4,
+		h5,
+		.h5,
+		h6,
+		.h6 {
+			margin-top: calc(1rem + 0.25em);
+
+			&:first-child {
+				margin-top: 0;
+			}
+		}
+
+		strong {
+			font-weight: inherit;
+		}
+	}
+}

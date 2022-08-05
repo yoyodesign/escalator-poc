@@ -1,0 +1,5 @@
+@layer base {
+	.container {
+		@apply mx-auto w-full px-3.75 md:px-6 lg:px-10;
+	}
+}

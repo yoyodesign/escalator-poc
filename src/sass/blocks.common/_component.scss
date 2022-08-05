@@ -1,0 +1,36 @@
+@use "../mixins.common/theme";
+
+@layer components {
+	.component {
+		$this: &;
+
+		@mixin collapse {
+			&:not(#{$this}--no-collapse) {
+				& + & {
+					@apply pt-0;
+				}
+			}
+		}
+
+		@apply py-12 lg:py-20;
+
+		&#{&}--extra-padding {
+			@apply py-20 lg:py-32;
+		}
+
+		@include theme.theme(theme.$default) {
+			@apply bg-white;
+			@include collapse;
+		}
+
+		@include theme.theme(theme.$light) {
+			@apply bg-grey-5;
+			@include collapse;
+		}
+
+		@include theme.theme(theme.$dark) {
+			@apply bg-black text-white;
+			@include collapse;
+		}
+	}
+}

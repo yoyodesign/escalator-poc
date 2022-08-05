@@ -1,0 +1,10 @@
+$default: "default";
+$light: "light";
+$dark: "dark";
+
+@mixin theme($name) {
+	@at-root .theme--#{$name} &,
+		&.theme--#{$name} {
+		@content;
+	}
+}

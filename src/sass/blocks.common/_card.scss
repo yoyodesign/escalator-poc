@@ -1,0 +1,17 @@
+@use "../mixins.common/theme";
+
+@layer components {
+	.card {
+		$this: &;
+
+		@apply bg-grey-4;
+
+		@include theme.theme(theme.$light) {
+			@apply bg-white;
+		}
+
+		@include theme.theme(theme.$dark) {
+			@apply bg-white text-black;
+		}
+	}
+}

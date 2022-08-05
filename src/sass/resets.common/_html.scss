@@ -1,0 +1,7 @@
+@layer base {
+	html {
+		@apply h-full;
+		scroll-behavior: smooth;
+		-webkit-tap-highlight-color: transparent; // sass-lint:disable-line no-vendor-prefixes
+	}
+}
