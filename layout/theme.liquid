@@ -9,7 +9,7 @@
     <title>
       {{ page_title }}
     </title>
-    <link rel="stylesheet" href="{{ '/assets/index.css' | asset_url }}" type="text/css" />
+    <link rel="stylesheet" href="{{ 'index.css' | asset_url }}" type="text/css" />
     
     {{ content_for_header }}
   </head>
@@ -23,6 +23,6 @@
     </main>
     
     {% section 'footer' %}
-    <script src="{{ '/assets/index.js' | asset_url }}" defer='defer'></script>
+    <script src="{{ 'index.js' | asset_url }}" defer='defer'></script>
   </body>
 </html>
