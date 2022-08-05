@@ -9,7 +9,7 @@
     <title>
       {{ page_title }}
     </title>
-    <link rel="stylesheet" href="/assets/index.css" type="text/css" />
+    <link rel="stylesheet" href="{{ '/assets/index.css' | asset_url }}" type="text/css" />
     
     {{ content_for_header }}
   </head>
@@ -17,14 +17,12 @@
   <body class="w-full overflow-x-hidden relative">
 
     {% section 'header' %}
-
-    {% render 'cart-drawer' %}
     
     <main id="MainContent" role="main" tabindex="-1">
       {{ content_for_layout }}
     </main>
     
     {% section 'footer' %}
-    <script src="/assets/index.js" defer='defer'></script>
+    <script src="{{ '/assets/index.js' | asset_url }}" defer='defer'></script>
   </body>
 </html>

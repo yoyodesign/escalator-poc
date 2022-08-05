@@ -1,11 +1,16 @@
-<div>
-  main page
+<div class="section-{{ section.id }}">
+  <h1 class="text-h1">
+    {{ page.title | escape }}
+  </h1>
+  <div class="flex flex-col">
+    {{ page.content }}
+  </div>
 </div>
+
 
 {% schema %}
 {
   "name": "t:sections.main-page.name",
-  "tag": "section",
-  "class": "section"
+  "tag": "section"
 }
 {% endschema %}

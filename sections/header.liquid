@@ -41,28 +41,37 @@
   
   <ul class="flex flex-row items-center h-full">
     <li class="mx-2">
-      <button>
-        <svg class="h-6 w-6 text-white" alt="search">
-          <use href="/assets/symbols.svg#search" />
-        </svg>
-        <span class="sr-only">Search</span>
-      </button>
+      <details class="mx-2 open:overflow-visible">
+        <summary>
+          <svg class="h-6 w-6 text-white" alt="search">
+            <use href="/assets/symbols.svg#search" />
+          </svg>
+          <span class="sr-only">Search</span>
+        </summary>
+        {% render "search-bar" %}
+      </details>
+    </li>
+    <li class="mx-2 relative">
+      <details class="mx-2 relative open:overflow-visible">
+        <summary>
+          <svg class="h-6 w-6 text-white" alt="account">
+            <use href="/assets/symbols.svg#account" />
+          </svg>
+          <span class="sr-only">Account</span>
+        </summary>
+        {% render "account-menu" %}
+      </details>
     </li>
     <li class="mx-2">
-      <a>
-        <svg class="h-6 w-6 text-white" alt="search">
-          <use href="/assets/symbols.svg#account" />
-        </svg>
-        <span class="sr-only">Account</span>
-      </a>
-    </li>
-    <li class="mx-2">
-      <button is="ui-toggle" data-toggle-target="side-cart" data-toggle-classes="scale-110" class="transform transition-transform">
-        <svg class="h-6 w-6 text-white" alt="search">
-          <use href="/assets/symbols.svg#cart" />
-        </svg>
-        <span class="sr-only">Cart</span>
-      </button>
+      <details class="mx-2 open:overflow-visible">
+        <summary>
+          <svg class="h-6 w-6 text-white" alt="cart">
+            <use href="/assets/symbols.svg#cart" />
+          </svg>
+          <span class="sr-only">Cart</span>
+        </summary>
+        {% render "cart-drawer" %}
+      </details>
     </li>
   </ul>
 </div>
