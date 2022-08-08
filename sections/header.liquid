@@ -39,7 +39,7 @@
     </ul>
   </nav>
   
-  <ul class="flex flex-row items-center h-full">
+  <ul class="flex flex-row items-center h-full z-20">
     <li class="mx-2">
       <details class="mx-2 open:overflow-visible">
         <summary>
@@ -63,7 +63,7 @@
       </details>
     </li>
     <li class="mx-2">
-      <details class="mx-2 open:overflow-visible">
+      <details data-cart-drawer-details class="static mx-2 open:overflow-visible z-20">
         <summary>
           <svg class="h-6 w-6 text-white" alt="cart">
             <use href="/assets/symbols.svg#cart" />
@@ -80,7 +80,7 @@
 {
   "name": "t:sections.header.name",
   "tag": "header",
-  "class": "z-20",
+  "class": "site-header",
   "settings": [
     {
       "type": "link_list",

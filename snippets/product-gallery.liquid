@@ -1,0 +1,44 @@
+{% comment %}
+    Renders product media gallery
+
+    Accepts:
+    - media: {Object} Product Media object
+
+    Usage:
+    {% render 'product-gallery',
+        media: product.media
+    %}
+{% endcomment %}
+
+<media-gallery>
+    <div class="swiper w-[400px] h-64">
+        <ul class="swiper-wrapper">
+        {%- for item in media -%}
+        <li class="swiper-slide">
+            <img
+            class="object-cover object-center"
+            srcset="{%- if item.preview_image.width >= 550 -%}{{ item.preview_image | image_url: width: 550 }} 550w,{%- endif -%}
+                    {%- if item.preview_image.width >= 1100 -%}{{ item.preview_image | image_url: width: 1100 }} 1100w,{%- endif -%}
+                    {%- if item.preview_image.width >= 1445 -%}{{ item.preview_image | image_url: width: 1445 }} 1445w,{%- endif -%}
+                    {%- if item.preview_image.width >= 1680 -%}{{ item.preview_image | image_url: width: 1680 }} 1680w,{%- endif -%}
+                    {%- if item.preview_image.width >= 2048 -%}{{ item.preview_image | image_url: width: 2048 }} 2048w,{%- endif -%}
+                    {%- if item.preview_image.width >= 2200 -%}{{ item.preview_image | image_url: width: 2200 }} 2200w,{%- endif -%}
+                    {%- if item.preview_image.width >= 2890 -%}{{ item.preview_image | image_url: width: 2890 }} 2890w,{%- endif -%}
+                    {%- if item.preview_image.width >= 4096 -%}{{ item.preview_image | image_url: width: 4096 }} 4096w,{%- endif -%}
+                    {{ item.preview_image | image_url }} {{ item.preview_image.width }}w"
+            sizes="(min-width: 750px) calc(100vw - 22rem), 1100px"
+            src="{{ item.preview_image | image_url: width: 1445 }}"
+            alt="{{ item.alt | escape }}"
+            loading="lazy"
+            width="1100"
+            height="{{ 1100 | divided_by: item.preview_image.aspect_ratio | ceil }}"
+            data-media-id="{{ item.id }}"
+            />
+        </li>
+        {%- endfor -%}
+        </ul>
+        <div class="swiper-pagination"></div>
+        <button class="swiper-button-next"></button>
+        <button class="swiper-button-prev"></button>
+    </div>
+</media-gallery>

@@ -1,12 +1,70 @@
-<div>
-  main shopify
-</div>
+<div class="pt-24 flex flex-col p-10">
+  <h1 class="text-h1">{{ product.title }}</h1>
+  
+  {%- render "product-gallery", media: product.media -%}
 
+  <h2 class="text-h3 my-4">Description</h2>
+
+  {%- if product.description != blank -%}
+    <p>{{ product.description }}</p>
+  {%- endif -%}
+
+  <h2>Price</h2>
+  <p>{{ cart.currency.iso_code }}</p>
+  <p>
+    {% if product.selected_or_first_available_variant.sku != blank -%}
+        sku: {{ product.selected_or_first_available_variant.sku | json }},
+      {%- endif %}
+  </p>
+  <p>brand: {{ product.vendor }}</p>
+  <p>availability: {{ variant.available }}</p>
+
+  {%- render "product-form", product: product -%}
+
+</div>
 
 {% schema %}
 {
   "name": "t:sections.main-product.name",
   "tag": "section",
-  "class": "section"
+  "class": "section",
+  "blocks": [
+    {
+      "type": "@app"
+    },
+    {
+      "type": "text",
+      "name": "t:sections.main-product.blocks.text.name",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "default": "Text block",
+          "label": "t:sections.main-product.blocks.text.settings.text.label"
+        },
+        {
+          "type": "select",
+          "id": "text_style",
+          "options": [
+            {
+              "value": "body",
+              "label": "t:sections.main-product.blocks.text.settings.text_style.options__1.label"
+            },
+            {
+              "value": "subtitle",
+              "label": "t:sections.main-product.blocks.text.settings.text_style.options__2.label"
+            },
+            {
+              "value": "uppercase",
+              "label": "t:sections.main-product.blocks.text.settings.text_style.options__3.label"
+            }
+          ],
+          "default": "body",
+          "label": "t:sections.main-product.blocks.text.settings.text_style.label"
+        }
+      ]
+    }
+  ]
 }
 {% endschema %}
+
