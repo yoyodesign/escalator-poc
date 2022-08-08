@@ -1,11 +1,12 @@
 {
   "scripts": {
-  "prepare": "husky install",
-  "prettier": "prettier -w .",
-  "start": "shopify theme serve",
-  "build": "gulp production",
-  "watch": "gulp watch"
-},
+    "build": "gulp production",
+    "login": "shopify login",
+    "prepare": "husky install",
+    "prettier": "prettier -w .",
+    "start": "shopify theme serve",
+    "watch": "gulp watch"
+  },
   "devDependencies": {
     "@babel/core": "^7.18.10",
     "@babel/preset-env": "^7.18.10",
@@ -39,10 +40,12 @@
     "webpack-stream": "^7.0.0"
   },
   "dependencies": {
+    "@shopify/shopify-api": "^5.0.1",
     "@ungap/custom-elements": "^1.1.0",
-    "body-scroll-lock": "^4.0.0-beta.0"
+    "body-scroll-lock": "^4.0.0-beta.0",
+    "swiper": "^8.3.2"
   },
   "browserslist": [
-		"last 2 versions"
-	]
+    "last 2 versions"
+  ]
 }
