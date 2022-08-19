@@ -17,7 +17,7 @@ export default class CartList extends HTMLElement {
 	}
 
     #handleClick = (): void => {
-        console.log(this.#data);
+        console.log("list", this.#data);
     }
 
 	disconnectedCallback(): void {

@@ -50,14 +50,13 @@ export class CartService {
         console.log("cart cleared");
     }
 
-    getItems = (): any => {
-        let data;
-        fetch(this.#shopUrl + "/cart.js", {
+    getItems = async (): Promise<any> => {
+        let data: any = await fetch(this.#shopUrl + "/cart.js", {
             method: "GET",
             headers: {
                 'Content-Type': 'application/json'
               }
-        }).then(res => data = res).catch(err => console.log(err));
+        }).then(res => res).catch(err => err);
         return data;
     }
 
