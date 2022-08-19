@@ -592,17 +592,22 @@ class CartService {
         },
         body: JSON.stringify(items)
       }).then(res => console.log(res)).catch(err => console.log(err));
-      return "added product";
     };
 
-    this.removeProduct = id => {
-      console.log("removed product");
-      return "removed product";
+    this.removeProducts = ids => {
+      let updates = {};
+      ids.forEach(id => updates[`${id}`] = 0);
+      fetch(__classPrivateFieldGet(this, _CartService_endpoint, "f") + "/update.js", {
+        method: "POST",
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(updates)
+      }).then(res => console.log(res)).catch(err => console.log(err));
     };
 
     this.updateProduct = (id, quantity) => {
       console.log("updated product");
-      return "updated successfully";
     };
 
     this.clearItems = () => {

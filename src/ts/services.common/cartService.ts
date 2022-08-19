@@ -1,7 +1,12 @@
-interface CartItem {
+interface AddCartItem {
     id: number;
     quantity: number;
 }
+
+interface UpdateCartItems {
+    [key: number]: number;
+}
+
 
 export class CartService {
 
@@ -14,7 +19,7 @@ export class CartService {
         this.#endpoint = this.#shopUrl + "/cart"
     }
 
-    addProducts = (items: CartItem[]): string => {
+    addProducts = (items: AddCartItem[]): void => {
         console.log("add product");
         fetch(this.#endpoint + "/add.js", {
             method: "POST",
@@ -23,24 +28,29 @@ export class CartService {
               },
             body: JSON.stringify(items)
         }).then(res => console.log(res)).catch(err => console.log(err));
-        return "added product";
     }
 
-    removeProduct = (id: number): string => {
-        console.log("removed product");
-        return "removed product";
+    removeProducts = ( ids: number[] ): void => {
+        let updates: any = {};
+        ids.forEach((id): number => updates[`${id}`] = 0)
+        fetch(this.#endpoint + "/update.js", {
+            method: "POST",
+            headers: {
+                'Content-Type': 'application/json'
+              },
+            body: JSON.stringify(updates)
+        }).then(res => console.log(res)).catch(err => console.log(err));
     }
 
-    updateProduct = (id: number, quantity: number): string => {
+    updateProduct = (id: number, quantity: number): void => {
         console.log("updated product");
-        return "updated successfully";
     }
 
     clearItems = (): void => {
         console.log("cart cleared");
     }
 
-    getItems = (): CartItem[] => {
+    getItems = (): AddCartItem[] => {
         return [];
     }
 
