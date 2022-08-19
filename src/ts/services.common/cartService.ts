@@ -52,7 +52,7 @@ export class CartService {
 
     getItems = (): any => {
         let data;
-        fetch(this.#endpoint + "/cart.js", {
+        fetch(this.#shopUrl + "/cart.js", {
             method: "GET",
             headers: {
                 'Content-Type': 'application/json'
