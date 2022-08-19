@@ -45,12 +45,7 @@ export class CartService {
     }
 
     clearItems = (): void => {
-        fetch(this.#shopUrl + "/cart/clear", {
-            method: "POST",
-            headers: {
-                'Content-Type': 'application/json'
-              }
-        }).then(res => console.log(res)).catch(err => err);
+        fetch(this.#shopUrl + "/cart/clear").then(res => console.log(res)).catch(err => err);
     }
 
     getItems = (): Promise<any> => {

@@ -680,12 +680,7 @@ class CartService {
     };
 
     this.clearItems = () => {
-      fetch(__classPrivateFieldGet(this, _CartService_shopUrl, "f") + "/cart/clear", {
-        method: "POST",
-        headers: {
-          'Content-Type': 'application/json'
-        }
-      }).then(res => console.log(res)).catch(err => err);
+      fetch(__classPrivateFieldGet(this, _CartService_shopUrl, "f") + "/cart/clear").then(res => console.log(res)).catch(err => err);
     };
 
     this.getItems = () => {
