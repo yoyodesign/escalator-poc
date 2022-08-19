@@ -17,14 +17,14 @@ export class CartService {
     constructor() {
     }
 
-    addProduct = (items: CartItem): void => {
+    addProducts = (items: CartItem[]): void => {
         console.log("add products:", items);
         fetch(this.#shopUrl + "/cart/add.js", {
             method: "POST",
             headers: {
                 'Content-Type': 'application/json'
               },
-            body: JSON.stringify(items)
+            body: JSON.stringify({ items: items })
         }).then(res => console.log(res)).catch(err => console.log(err));
     }
 
@@ -54,7 +54,7 @@ export class CartService {
             headers: {
                 'Content-Type': 'application/json'
               }
-        }).then(res => res.body).catch(err => err);
+        }).then(res => res).catch(err => err);
         return data;
     }
 
