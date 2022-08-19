@@ -56,7 +56,7 @@ export class CartService {
             headers: {
                 'Content-Type': 'application/json'
               }
-        }).then(res => res).catch(err => err);
+        }).then(res => res.body).catch(err => err);
         return data;
     }
 
