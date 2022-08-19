@@ -45,7 +45,7 @@ export class CartService {
     }
 
     clearItems = (): void => {
-        fetch(this.#shopUrl + "/cart/clear").then(res => console.log(res)).catch(err => err);
+        fetch(this.#shopUrl + "/cart/clear");
     }
 
     getItems = (): Promise<any> => {
@@ -55,11 +55,17 @@ export class CartService {
                 'Content-Type': 'application/json'
               }
         }).then(res => res.json()).then(data => data).catch(err => err);
-        return cart;
+        return cart.items;
     }
 
     getTotalPrice = (): number => {
-        return 100;
+        let cart: any = fetch(this.#shopUrl + "/cart.js", {
+            method: "GET",
+            headers: {
+                'Content-Type': 'application/json'
+              }
+        }).then(res => res.json()).then(data => data).catch(err => err);
+        return cart.total_price;
     }
 }
 

@@ -680,7 +680,7 @@ class CartService {
     };
 
     this.clearItems = () => {
-      fetch(__classPrivateFieldGet(this, _CartService_shopUrl, "f") + "/cart/clear").then(res => console.log(res)).catch(err => err);
+      fetch(__classPrivateFieldGet(this, _CartService_shopUrl, "f") + "/cart/clear");
     };
 
     this.getItems = () => {
@@ -690,11 +690,17 @@ class CartService {
           'Content-Type': 'application/json'
         }
       }).then(res => res.json()).then(data => data).catch(err => err);
-      return cart;
+      return cart.items;
     };
 
     this.getTotalPrice = () => {
-      return 100;
+      let cart = fetch(__classPrivateFieldGet(this, _CartService_shopUrl, "f") + "/cart.js", {
+        method: "GET",
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      }).then(res => res.json()).then(data => data).catch(err => err);
+      return cart.total_price;
     };
   }
 
