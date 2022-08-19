@@ -622,38 +622,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "CartService": function() { return /* binding */ CartService; }
 /* harmony export */ });
-var __awaiter = undefined && undefined.__awaiter || function (thisArg, _arguments, P, generator) {
-  function adopt(value) {
-    return value instanceof P ? value : new P(function (resolve) {
-      resolve(value);
-    });
-  }
-
-  return new (P || (P = Promise))(function (resolve, reject) {
-    function fulfilled(value) {
-      try {
-        step(generator.next(value));
-      } catch (e) {
-        reject(e);
-      }
-    }
-
-    function rejected(value) {
-      try {
-        step(generator["throw"](value));
-      } catch (e) {
-        reject(e);
-      }
-    }
-
-    function step(result) {
-      result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected);
-    }
-
-    step((generator = generator.apply(thisArg, _arguments || [])).next());
-  });
-};
-
 var __classPrivateFieldGet = undefined && undefined.__classPrivateFieldGet || function (receiver, state, kind, f) {
   if (kind === "a" && !f) throw new TypeError("Private accessor was defined without a getter");
   if (typeof state === "function" ? receiver !== state || !f : !state.has(receiver)) throw new TypeError("Cannot read private member from an object whose class did not declare it");
@@ -699,10 +667,15 @@ class CartService {
       console.log("cart cleared");
     };
 
-    this.getItems = () => __awaiter(this, void 0, void 0, function* () {
-      let data = yield fetch(__classPrivateFieldGet(this, _CartService_shopUrl, "f") + "/cart.js").then(res => res.body).catch(err => err);
+    this.getItems = () => {
+      let data = fetch(__classPrivateFieldGet(this, _CartService_shopUrl, "f") + "/cart.js", {
+        method: "GET",
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      }).then(res => res.body).catch(err => err);
       return data;
-    });
+    };
 
     this.getTotalPrice = () => {
       return 100;
