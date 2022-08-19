@@ -45,7 +45,12 @@ export class CartService {
     }
 
     clearItems = (): void => {
-        console.log("cart cleared");
+        fetch(this.#shopUrl + "/cart/clear", {
+            method: "GET",
+            headers: {
+                'Content-Type': 'application/json'
+              }
+        }).then(res => console.log(res)).catch(err => err);
     }
 
     getItems = (): Promise<any> => {
