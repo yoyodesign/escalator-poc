@@ -22,7 +22,7 @@ export class CartService {
                 'Content-Type': 'application/json'
               },
             body: JSON.stringify(items)
-        }).then(res => console.log(res))
+        }).then(res => console.log(res));
         return "added product";
     }
 

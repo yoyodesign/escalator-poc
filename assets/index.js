@@ -287,6 +287,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": function() { return /* binding */ ProductForm; }
 /* harmony export */ });
 /* harmony import */ var _services_common_cartService__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../services.common/cartService */ "./src/ts/services.common/cartService.ts");
+var __classPrivateFieldGet = undefined && undefined.__classPrivateFieldGet || function (receiver, state, kind, f) {
+  if (kind === "a" && !f) throw new TypeError("Private accessor was defined without a getter");
+  if (typeof state === "function" ? receiver !== state || !f : !state.has(receiver)) throw new TypeError("Cannot read private member from an object whose class did not declare it");
+  return kind === "m" ? f : kind === "a" ? f.call(receiver) : f ? f.value : state.get(receiver);
+};
+
 var __classPrivateFieldSet = undefined && undefined.__classPrivateFieldSet || function (receiver, state, value, kind, f) {
   if (kind === "m") throw new TypeError("Private method is not writable");
   if (kind === "a" && !f) throw new TypeError("Private accessor was defined without a setter");
@@ -294,13 +300,7 @@ var __classPrivateFieldSet = undefined && undefined.__classPrivateFieldSet || fu
   return kind === "a" ? f.call(receiver, value) : f ? f.value = value : state.set(receiver, value), value;
 };
 
-var __classPrivateFieldGet = undefined && undefined.__classPrivateFieldGet || function (receiver, state, kind, f) {
-  if (kind === "a" && !f) throw new TypeError("Private accessor was defined without a getter");
-  if (typeof state === "function" ? receiver !== state || !f : !state.has(receiver)) throw new TypeError("Cannot read private member from an object whose class did not declare it");
-  return kind === "m" ? f : kind === "a" ? f.call(receiver) : f ? f.value : state.get(receiver);
-};
-
-var _ProductForm_form, _ProductForm_cartDrawerDetails, _ProductForm_productId, _ProductForm_quantity, _ProductForm_handleChange, _ProductForm_handleSubmit;
+var _ProductForm_form, _ProductForm_cartDrawerDetails, _ProductForm_productId, _ProductForm_variantId, _ProductForm_quantity, _ProductForm_handleChange, _ProductForm_handleSubmit;
 
 
 class ProductForm extends HTMLElement {
@@ -313,16 +313,17 @@ class ProductForm extends HTMLElement {
 
     _ProductForm_productId.set(this, void 0);
 
+    _ProductForm_variantId.set(this, void 0);
+
     _ProductForm_quantity.set(this, 1);
 
-    _ProductForm_handleChange.set(this, event => {
-      __classPrivateFieldSet(this, _ProductForm_productId, Number(this.querySelector('input[name="Color"]:checked').value), "f");
+    _ProductForm_handleChange.set(this, event => {// this.#variantId = Number((this.querySelector('input[name="Color"]:checked') as HTMLInputElement).value);
     });
 
     _ProductForm_handleSubmit.set(this, event => {
       event.preventDefault();
       const cartItem = {
-        id: __classPrivateFieldGet(this, _ProductForm_productId, "f"),
+        id: __classPrivateFieldGet(this, _ProductForm_variantId, "f"),
         quantity: __classPrivateFieldGet(this, _ProductForm_quantity, "f")
       };
       _services_common_cartService__WEBPACK_IMPORTED_MODULE_0__["default"].addProducts([cartItem]);
@@ -336,8 +337,11 @@ class ProductForm extends HTMLElement {
 
     __classPrivateFieldSet(this, _ProductForm_productId, Number(this.dataset.productId), "f");
 
+    __classPrivateFieldSet(this, _ProductForm_variantId, Number(this.dataset.defaultVariantId), "f");
+
     __classPrivateFieldSet(this, _ProductForm_cartDrawerDetails, document.querySelector("[data-cart-drawer-details]"), "f");
 
+    console.log(__classPrivateFieldGet(this, _ProductForm_variantId, "f"));
     __classPrivateFieldGet(this, _ProductForm_form, "f").onsubmit = __classPrivateFieldGet(this, _ProductForm_handleSubmit, "f");
     __classPrivateFieldGet(this, _ProductForm_form, "f").onchange = __classPrivateFieldGet(this, _ProductForm_handleChange, "f");
   }
@@ -345,7 +349,7 @@ class ProductForm extends HTMLElement {
   disconnectedCallback() {}
 
 }
-_ProductForm_form = new WeakMap(), _ProductForm_cartDrawerDetails = new WeakMap(), _ProductForm_productId = new WeakMap(), _ProductForm_quantity = new WeakMap(), _ProductForm_handleChange = new WeakMap(), _ProductForm_handleSubmit = new WeakMap();
+_ProductForm_form = new WeakMap(), _ProductForm_cartDrawerDetails = new WeakMap(), _ProductForm_productId = new WeakMap(), _ProductForm_variantId = new WeakMap(), _ProductForm_quantity = new WeakMap(), _ProductForm_handleChange = new WeakMap(), _ProductForm_handleSubmit = new WeakMap();
 ProductForm.NAME = "product-form";
 customElements.define(ProductForm.NAME, ProductForm);
 

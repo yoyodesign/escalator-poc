@@ -6,26 +6,30 @@ export default class ProductForm extends HTMLElement {
     #form: HTMLFormElement;
     #cartDrawerDetails: HTMLDetailsElement;
     #productId: number;
+    #variantId: number;
     #quantity: number = 1;
 
 	connectedCallback(): void {
         this.#form = this.querySelector("form");
         this.#productId = Number(this.dataset.productId);
+        this.#variantId = Number(this.dataset.defaultVariantId);
         this.#cartDrawerDetails = document.querySelector("[data-cart-drawer-details]");
+
+        console.log(this.#variantId);
 
        this.#form.onsubmit = this.#handleSubmit;
        this.#form.onchange = this.#handleChange
 	}
     
     #handleChange = (event: FormDataEvent): void => {
-        this.#productId = Number((this.querySelector('input[name="Color"]:checked') as HTMLInputElement).value);
+        // this.#variantId = Number((this.querySelector('input[name="Color"]:checked') as HTMLInputElement).value);
     }
 
     #handleSubmit = (event: SubmitEvent): void => {
         event.preventDefault();
 
         const cartItem = {
-            id: this.#productId,
+            id: this.#variantId,
             quantity: this.#quantity
         };
 
