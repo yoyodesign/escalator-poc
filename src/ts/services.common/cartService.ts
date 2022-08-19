@@ -1,4 +1,4 @@
-interface AddCartItem {
+interface CartItem {
     id: number;
     quantity: number;
 }
@@ -19,7 +19,7 @@ export class CartService {
         this.#endpoint = this.#shopUrl + "/cart"
     }
 
-    addProducts = (items: AddCartItem): void => {
+    addProduct = (items: CartItem): void => {
         console.log("add products:", items);
         fetch(this.#endpoint + "/add.js", {
             method: "POST",
@@ -50,8 +50,15 @@ export class CartService {
         console.log("cart cleared");
     }
 
-    getItems = (): AddCartItem[] => {
-        return [];
+    getItems = (): any => {
+        let data;
+        fetch(this.#endpoint + "/cart.js", {
+            method: "GET",
+            headers: {
+                'Content-Type': 'application/json'
+              }
+        }).then(res => data = res).catch(err => console.log(err));
+        return data;
     }
 
     getTotalPrice = (): number => {

@@ -1,4 +1,4 @@
-import cartServive, { CartService } from "../services.common/cartService";
+import cartService, { CartService } from "../services.common/cartService";
 
 export default class ProductForm extends HTMLElement {
 	public static NAME = "product-form";
@@ -37,7 +37,7 @@ export default class ProductForm extends HTMLElement {
 
         console.log(cartItem);
 
-        cartServive.addProducts(cartItem)
+        cartService.addProduct(cartItem)
 
         this.#cartDrawerDetails.setAttribute("open", "");
     }

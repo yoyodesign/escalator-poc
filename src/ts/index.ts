@@ -1,6 +1,7 @@
 import "@ungap/custom-elements";
 
 import "./blocks.common/AccordionComponent";
+import "./blocks.common/CartList";
 import "./blocks.common/CustomLottie";
 import "./blocks.common/MediaGallery";
 import "./blocks.common/ProductForm";
