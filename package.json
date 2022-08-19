@@ -1,7 +1,7 @@
 {
   "scripts": {
     "build": "gulp production",
-    "login": "shopify login",
+    "login": "shopify login --store escalator-poc.myshopify.com",
     "prepare": "husky install",
     "prettier": "prettier -w .",
     "start": "shopify theme serve",
