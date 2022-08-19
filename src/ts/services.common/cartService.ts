@@ -46,7 +46,7 @@ export class CartService {
 
     clearItems = (): void => {
         fetch(this.#shopUrl + "/cart/clear", {
-            method: "GET",
+            method: "POST",
             headers: {
                 'Content-Type': 'application/json'
               }

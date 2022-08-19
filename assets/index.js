@@ -681,7 +681,7 @@ class CartService {
 
     this.clearItems = () => {
       fetch(__classPrivateFieldGet(this, _CartService_shopUrl, "f") + "/cart/clear", {
-        method: "GET",
+        method: "POST",
         headers: {
           'Content-Type': 'application/json'
         }

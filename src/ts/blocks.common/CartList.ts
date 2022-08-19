@@ -11,12 +11,9 @@ export default class CartList extends HTMLElement {
 	connectedCallback(): void {
         this.#clearButton = this.querySelector("[data-clear-cart]");
         this.#button = this.querySelector("button");
-        
         this.#data = cartService.getItems();
-
         this.#button.addEventListener("click", this.#handleClick);
         this.#clearButton.addEventListener("click", this.#clearCart);
-
 	}
 
     #handleClick = (): void => {
