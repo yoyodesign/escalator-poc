@@ -37,7 +37,7 @@ export default class ProductForm extends HTMLElement {
 
         console.log(cartItem);
 
-        cartServive.addProducts([cartItem, item])
+        cartServive.addProducts(cartItem)
 
         this.#cartDrawerDetails.setAttribute("open", "");
     }
