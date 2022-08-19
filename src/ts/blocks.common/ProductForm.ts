@@ -7,7 +7,7 @@ export default class ProductForm extends HTMLElement {
     #cartDrawerDetails: HTMLDetailsElement;
     #productId: number;
     #variantId: number;
-    #quantity: number = 1;
+    #quantity: number = 2;
 
 	connectedCallback(): void {
         this.#form = this.querySelector("form");

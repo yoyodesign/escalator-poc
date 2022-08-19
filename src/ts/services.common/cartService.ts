@@ -15,14 +15,14 @@ export class CartService {
     }
 
     addProducts = (items: CartItem[]): string => {
-        console.log("added product");
+        console.log("add product");
         fetch(this.#endpoint + "/add.js", {
             method: "POST",
             headers: {
                 'Content-Type': 'application/json'
               },
-            body: JSON.stringify({ items: [items] })
-        }).then(res => console.log(res));
+            body: JSON.stringify(items)
+        }).then(res => console.log(res)).catch(err => console.log(err));
         return "added product";
     }
 
