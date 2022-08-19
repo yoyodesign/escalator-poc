@@ -12,16 +12,14 @@ export class CartService {
 
 
     #shopUrl: string = "https://escalator-poc.myshopify.com";
-    #endpoint: string;
     #locale: string = "/en-GB";
 
     constructor() {
-        this.#endpoint = this.#shopUrl + "/cart"
     }
 
     addProduct = (items: CartItem): void => {
         console.log("add products:", items);
-        fetch(this.#endpoint + "/add.js", {
+        fetch(this.#shopUrl + "/cart/add.js", {
             method: "POST",
             headers: {
                 'Content-Type': 'application/json'
@@ -33,7 +31,7 @@ export class CartService {
     removeProducts = ( ids: number[] ): void => {
         let updates: any = {};
         ids.forEach((id): number => updates[`${id}`] = 0)
-        fetch(this.#endpoint + "/update.js", {
+        fetch(this.#shopUrl + "/cart/update.js", {
             method: "POST",
             headers: {
                 'Content-Type': 'application/json'
@@ -51,12 +49,7 @@ export class CartService {
     }
 
     getItems = async (): Promise<any> => {
-        let data: any = await fetch(this.#shopUrl + "/cart.js", {
-            method: "GET",
-            headers: {
-                'Content-Type': 'application/json'
-              }
-        }).then(res => res.body).catch(err => err);
+        let data: any = await fetch(this.#shopUrl + "/cart.js").then(res => res.body).catch(err => err);
         return data;
     }
 

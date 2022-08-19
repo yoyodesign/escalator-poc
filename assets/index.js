@@ -660,26 +660,17 @@ var __classPrivateFieldGet = undefined && undefined.__classPrivateFieldGet || fu
   return kind === "m" ? f : kind === "a" ? f.call(receiver) : f ? f.value : state.get(receiver);
 };
 
-var __classPrivateFieldSet = undefined && undefined.__classPrivateFieldSet || function (receiver, state, value, kind, f) {
-  if (kind === "m") throw new TypeError("Private method is not writable");
-  if (kind === "a" && !f) throw new TypeError("Private accessor was defined without a setter");
-  if (typeof state === "function" ? receiver !== state || !f : !state.has(receiver)) throw new TypeError("Cannot write private member to an object whose class did not declare it");
-  return kind === "a" ? f.call(receiver, value) : f ? f.value = value : state.set(receiver, value), value;
-};
-
-var _CartService_shopUrl, _CartService_endpoint, _CartService_locale;
+var _CartService_shopUrl, _CartService_locale;
 
 class CartService {
   constructor() {
     _CartService_shopUrl.set(this, "https://escalator-poc.myshopify.com");
 
-    _CartService_endpoint.set(this, void 0);
-
     _CartService_locale.set(this, "/en-GB");
 
     this.addProduct = items => {
       console.log("add products:", items);
-      fetch(__classPrivateFieldGet(this, _CartService_endpoint, "f") + "/add.js", {
+      fetch(__classPrivateFieldGet(this, _CartService_shopUrl, "f") + "/cart/add.js", {
         method: "POST",
         headers: {
           'Content-Type': 'application/json'
@@ -691,7 +682,7 @@ class CartService {
     this.removeProducts = ids => {
       let updates = {};
       ids.forEach(id => updates[`${id}`] = 0);
-      fetch(__classPrivateFieldGet(this, _CartService_endpoint, "f") + "/update.js", {
+      fetch(__classPrivateFieldGet(this, _CartService_shopUrl, "f") + "/cart/update.js", {
         method: "POST",
         headers: {
           'Content-Type': 'application/json'
@@ -709,24 +700,17 @@ class CartService {
     };
 
     this.getItems = () => __awaiter(this, void 0, void 0, function* () {
-      let data = yield fetch(__classPrivateFieldGet(this, _CartService_shopUrl, "f") + "/cart.js", {
-        method: "GET",
-        headers: {
-          'Content-Type': 'application/json'
-        }
-      }).then(res => res.body).catch(err => err);
+      let data = yield fetch(__classPrivateFieldGet(this, _CartService_shopUrl, "f") + "/cart.js").then(res => res.body).catch(err => err);
       return data;
     });
 
     this.getTotalPrice = () => {
       return 100;
     };
-
-    __classPrivateFieldSet(this, _CartService_endpoint, __classPrivateFieldGet(this, _CartService_shopUrl, "f") + "/cart", "f");
   }
 
 }
-_CartService_shopUrl = new WeakMap(), _CartService_endpoint = new WeakMap(), _CartService_locale = new WeakMap();
+_CartService_shopUrl = new WeakMap(), _CartService_locale = new WeakMap();
 const cartService = new CartService();
 /* harmony default export */ __webpack_exports__["default"] = (cartService);
 
