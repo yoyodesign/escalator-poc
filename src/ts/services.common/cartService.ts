@@ -8,7 +8,7 @@ export class CartService {
 
     #shopUrl: string = "https://escalator-poc.myshopify.com";
     #endpoint: string;
-    #locale: string = "GBP";
+    #locale: string = "/en-GB";
 
     constructor() {
         this.#endpoint = this.#shopUrl + "/cart"
@@ -16,7 +16,7 @@ export class CartService {
 
     addProducts = (items: CartItem[]): string => {
         console.log("added product");
-        fetch(this.#endpoint + "/add.js", {
+        fetch(this.#endpoint + this.#locale + "/add.js", {
             method: "POST",
             headers: {
                 'Content-Type': 'application/json'
