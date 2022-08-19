@@ -49,13 +49,13 @@ export class CartService {
     }
 
     getItems = (): Promise<any> => {
-        let data: any = fetch(this.#shopUrl + "/cart.js", {
+        let cart: any = fetch(this.#shopUrl + "/cart.js", {
             method: "GET",
             headers: {
                 'Content-Type': 'application/json'
               }
-        }).then(res => res).catch(err => err);
-        return data;
+        }).then(res => res.json()).then(data => data).catch(err => err);
+        return cart;
     }
 
     getTotalPrice = (): number => {
