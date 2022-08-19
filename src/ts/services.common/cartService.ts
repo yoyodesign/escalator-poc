@@ -6,7 +6,7 @@ interface CartItem {
 export class CartService {
 
 
-    #shopUrl: string = "https://escalator-poc.myshopify.com/";
+    #shopUrl: string = "https://escalator-poc.myshopify.com";
     #endpoint: string;
     #locale: string = "GBP";
 
