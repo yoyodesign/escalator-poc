@@ -11,7 +11,7 @@ export class CartService {
     #locale: string = "GBP";
 
     constructor() {
-        this.#endpoint = this.#shopUrl + this.#locale + "/cart"
+        this.#endpoint = this.#shopUrl + "/cart"
     }
 
     addProducts = (items: CartItem[]): string => {
