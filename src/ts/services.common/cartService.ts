@@ -20,7 +20,7 @@ export class CartService {
     }
 
     addProducts = (items: AddCartItem[]): void => {
-        console.log("add product");
+        console.log("add products:", items);
         fetch(this.#endpoint + "/add.js", {
             method: "POST",
             headers: {

@@ -584,7 +584,7 @@ class CartService {
     _CartService_locale.set(this, "/en-GB");
 
     this.addProducts = items => {
-      console.log("add product");
+      console.log("add products:", items);
       fetch(__classPrivateFieldGet(this, _CartService_endpoint, "f") + "/add.js", {
         method: "POST",
         headers: {
