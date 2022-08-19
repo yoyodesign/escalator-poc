@@ -28,6 +28,8 @@ export default class ProductForm extends HTMLElement {
     #handleSubmit = (event: SubmitEvent): void => {
         event.preventDefault();
 
+        const item = { id: Number(this.dataset.nextVar), quantity: 1 };
+
         const cartItem = {
             id: this.#variantId,
             quantity: this.#quantity
@@ -35,7 +37,7 @@ export default class ProductForm extends HTMLElement {
 
         console.log(cartItem);
 
-        cartServive.addProducts([cartItem])
+        cartServive.addProducts([cartItem, item])
 
         this.#cartDrawerDetails.setAttribute("open", "");
     }

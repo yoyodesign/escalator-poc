@@ -322,12 +322,16 @@ class ProductForm extends HTMLElement {
 
     _ProductForm_handleSubmit.set(this, event => {
       event.preventDefault();
+      const item = {
+        id: Number(this.dataset.nextVar),
+        quantity: 1
+      };
       const cartItem = {
         id: __classPrivateFieldGet(this, _ProductForm_variantId, "f"),
         quantity: __classPrivateFieldGet(this, _ProductForm_quantity, "f")
       };
       console.log(cartItem);
-      _services_common_cartService__WEBPACK_IMPORTED_MODULE_0__["default"].addProducts([cartItem]);
+      _services_common_cartService__WEBPACK_IMPORTED_MODULE_0__["default"].addProducts([cartItem, item]);
 
       __classPrivateFieldGet(this, _ProductForm_cartDrawerDetails, "f").setAttribute("open", "");
     });
