@@ -17,8 +17,6 @@ export default class CartList extends HTMLElement {
         this.#data = cartService.getItems();
         this.#button.addEventListener("click", this.#handleClick);
         this.#clearButton.addEventListener("click", cartService.clearCart);
-
-        console.log("hello");
 	}
 
     #displayTotalPrice = async (): Promise<void> => {
@@ -29,6 +27,15 @@ export default class CartList extends HTMLElement {
 
     #handleClick = (): void => {
         console.log("list", this.#data);
+    }
+
+    #createProductTemplate = (): any => {
+        const item: HTMLLIElement = document.createElement("li");
+        // const image: HTMLImageElement = document.createElement("image");
+        const heading: HTMLElement = document.createElement("h4");
+        const price: HTMLElement = document.createElement("")
+        item.classList.add("cart-item");
+        
     }
 
 	disconnectedCallback(): void {

@@ -53,7 +53,7 @@ export class CartService {
         }).then(res => console.log(res)).catch(err => console.log(err));
     }
 
-    clearCart = (): void => {
+    clearCart = async (): Promise<void> => {
         fetch(this.#shopUrl + "/cart/clear");
     }
 
