@@ -1,0 +1,15 @@
+.cart-item {
+    @apply flex flex-row items-center justify-between;
+
+    &__image {
+        @apply block;
+    }
+
+    &__heading {
+        @apply text-h4;
+    }
+
+    &__price {
+        @apply text-h4;
+    }
+}

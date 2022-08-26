@@ -1,3 +1,3 @@
 .button {
-    @apply block border-2 border-black rounded px-12 py-4 whitespace-nowrap w-min transition-all hover:bg-black hover:text-white;
+    @apply block rounded px-12 py-4 whitespace-nowrap w-min transition-all bg-black text-white hover:opacity-80;
 }
