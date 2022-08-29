@@ -26,7 +26,7 @@ export default class ProductForm extends HTMLElement {
         this.#variantId = Number(this.dataset.defaultVariantId);
         this.#cartDrawerDetails = document.querySelector("[data-cart-drawer-details]");
 
-        this.#productObject = fetch(`${cartService.shopUrl}/product?=id${this.#productId}`, 
+        this.#productObject = fetch(`${cartService.shopUrl}/product?id=${this.#productId}`, 
                 {
                     method: "GET",
                     headers: {
