@@ -26,8 +26,8 @@ export default class CartList extends HTMLElement {
     }
 
     #displayTotalPrice = async (): Promise<void> => {
-        const total = await cartService.getTotalPrice();
-        this.#totalPrice.innerText = `${total}`;
+        const total = await cartService.getTotalPrice() / 100;
+        this.#totalPrice.innerText = `£ ${total}`;
         console.log(total);
     }
 

@@ -14,7 +14,7 @@ interface CartUpdates {
 
 export class CartService {
 
-    #shopUrl: string = "https://escalator-poc.myshopify.com";
+    shopUrl: string = "https://escalator-poc.myshopify.com";
     #locale: string = "/en-GB";
 
     constructor() {
@@ -22,7 +22,7 @@ export class CartService {
 
     addProducts = (items: CartItem[]): void => {
         console.log("add products:", items);
-        fetch(this.#shopUrl + "/cart/add.js", {
+        fetch(this.shopUrl + "/cart/add.js", {
             method: "POST",
             headers: {
                 'Content-Type': 'application/json'
@@ -34,7 +34,7 @@ export class CartService {
     removeProducts = async ( ids: number[] ): Promise<void> => {
         let updates: any = {};
         ids.forEach((id): number => updates[`${id}`] = 0)
-        await fetch(this.#shopUrl + "/cart/update.js", {
+        await fetch(this.shopUrl + "/cart/update.js", {
             method: "POST",
             headers: {
                 'Content-Type': 'application/json'
@@ -44,7 +44,7 @@ export class CartService {
     }
 
     updateProducts = async ( updates: CartUpdates ): Promise<void> => {
-        await fetch(this.#shopUrl + "/cart/update.js", {
+        await fetch(this.shopUrl + "/cart/update.js", {
             method: "POST",
             headers: {
                 'Content-Type': 'application/json'
@@ -54,11 +54,11 @@ export class CartService {
     }
 
     clearCart = async (): Promise<void> => {
-        fetch(this.#shopUrl + "/cart/clear");
+        fetch(this.shopUrl + "/cart/clear");
     }
 
     getCart = async (): Promise<any> => {
-        return await fetch(this.#shopUrl + "/cart.js", {
+        return await fetch(this.shopUrl + "/cart.js", {
             method: "GET",
             headers: {
                 'Content-Type': 'application/json'
@@ -67,7 +67,7 @@ export class CartService {
     }
 
     getItems = async (): Promise<any> => {
-        const cart: any = await fetch(this.#shopUrl + "/cart.js", {
+        const cart: any = await fetch(this.shopUrl + "/cart.js", {
             method: "GET",
             headers: {
                 'Content-Type': 'application/json'
@@ -77,7 +77,7 @@ export class CartService {
     }
 
     getTotalPrice = async (): Promise<number> => {
-        const cart: any = await fetch(this.#shopUrl + "/cart.js", {
+        const cart: any = await fetch(this.shopUrl + "/cart.js", {
             method: "GET",
             headers: {
                 'Content-Type': 'application/json'

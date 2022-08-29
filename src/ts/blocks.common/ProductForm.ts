@@ -3,21 +3,30 @@ import cartService, { CartService } from "../services.common/cartService";
 export default class ProductForm extends HTMLElement {
 	public static NAME = "product-form";
 
+    #testButton: HTMLButtonElement;
+
     #form: HTMLFormElement;
     #cartDrawerDetails: HTMLDetailsElement;
     #productId: number;
+    #productObject: any;
+
     #variantId: number;
     #variantStock: number = 6;
+    #variantOptions: string[];
 
     #decrementQuantityButton: HTMLButtonElement;
     #incrementQuantityButton: HTMLButtonElement;
     #quantityInput: HTMLInputElement;
 
 	connectedCallback(): void {
+        this.#testButton = this.querySelector("[data-test-button]");
+        this.#testButton.addEventListener("click", this.#runTest);
         this.#form = this.querySelector("form");
         this.#productId = Number(this.dataset.productId);
         this.#variantId = Number(this.dataset.defaultVariantId);
         this.#cartDrawerDetails = document.querySelector("[data-cart-drawer-details]");
+
+        this.#productObject = fetch(`${cartService.shopUrl}/product?=id${this.#productId}`);
 
 
 
@@ -29,6 +38,10 @@ export default class ProductForm extends HTMLElement {
        this.#form.onsubmit = this.#handleSubmit;
        this.#form.onchange = this.#handleChange
 	}
+
+    #runTest = (): void => {
+        console.log(this.#productObject);
+    }
     
     #handleChange = (event: FormDataEvent): void => {
         // this.#variantId = Number((this.querySelector('input[name="Color"]:checked') as HTMLInputElement).value);
