@@ -24,11 +24,14 @@
             <span>Stock: #stockcount</span>
         </div>
 
-        <div class="flex flex-row mb-10">
-            <button type="button" class="bg-black text-white px-4 rounded">-</button>
-                <input class="w-12 px-4 py-2 border border-black mx-4" type="number" min="1" value="1" id="product-quantity" name="product-quantity" />
-            <button type="button" class="bg-black text-white px-4 rounded">+</button>
-        </div>
+        <fieldset class="product-quantity">
+            <label for="product-quantity__label">Quantity:</label>
+            <div class="product-quantity__input-wrapper">
+                <button data-decrement-quantity type="button" class="product-quantity__button">-</button>
+                    <input class="product-quantity__input" type="number" min="1" value="1" id="product-quantity" name="product-quantity" />
+                <button data-increment-quantity type="button" class="product-quantity__button">+</button>
+            </div>
+        </fieldset>
 
         {%- unless product.has_only_default_variant -%}
 

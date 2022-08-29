@@ -1,0 +1,25 @@
+.product-quantity {
+	@apply flex flex-col my-4;
+
+	&__label {
+		@apply text-h4;
+	}
+
+	&__input-wrapper {
+		@apply flex flex-row mt-2;
+	}
+
+	&__button {
+		@apply bg-black text-white px-4 rounded transition-opacity hover:opacity-80;
+	}
+
+	&__input {
+		@apply w-16 px-4 py-2 border border-black mx-4;
+
+		&::-webkit-inner-spin-button, &::-webkit-outer-spin-button {
+			-webkit-appearance: none;
+			-moz-appearance: none;
+			appearance: none; 
+		}
+	}
+}
