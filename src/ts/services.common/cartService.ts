@@ -66,8 +66,8 @@ export class CartService {
         }).then(res => res.json()).then(data => data).catch(err => err);
     }
 
-    getItems = (): Promise<any> => {
-        const cart: any = fetch(this.#shopUrl + "/cart.js", {
+    getItems = async (): Promise<any> => {
+        const cart: any = await fetch(this.#shopUrl + "/cart.js", {
             method: "GET",
             headers: {
                 'Content-Type': 'application/json'

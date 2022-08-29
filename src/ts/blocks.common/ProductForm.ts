@@ -54,6 +54,7 @@ export default class ProductForm extends HTMLElement {
         this.#cartDrawerDetails.setAttribute("open", "");
     }
    
+    //PRODUCT QUANTITY FORM
     #initProductQuantity = (): void => {
         this.#decrementQuantityButton = this.querySelector("[data-decrement-quantity]");
         this.#incrementQuantityButton = this.querySelector("[data-increment-quantity]")

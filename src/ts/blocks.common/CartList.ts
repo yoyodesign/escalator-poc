@@ -4,6 +4,7 @@ export default class CartList extends HTMLElement {
 	public static NAME = "cart-list";
 
     #data: any;
+    #cart: any;
     #clearButton: HTMLButtonElement;
     #totalPrice: HTMLElement;
 
@@ -14,10 +15,15 @@ export default class CartList extends HTMLElement {
         this.#totalPrice = this.querySelector("[data-total-price]");
         this.#displayTotalPrice();
         this.#button = this.querySelector("button");
-        this.#data = cartService.getItems();
+        this.#cart = cartService.getCart();
+        console.log(this.#cart);
         this.#button.addEventListener("click", this.#handleClick);
         this.#clearButton.addEventListener("click", cartService.clearCart);
 	}
+
+    #updateCartDisplay = (): void => {
+
+    }
 
     #displayTotalPrice = async (): Promise<void> => {
         const total = await cartService.getTotalPrice();
@@ -26,7 +32,7 @@ export default class CartList extends HTMLElement {
     }
 
     #handleClick = (): void => {
-        console.log("list", this.#data);
+        console.log("list", this.#cart);
     }
 
     #createProductTemplate = (): any => {
