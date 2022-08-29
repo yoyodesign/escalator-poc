@@ -2,8 +2,9 @@
   <div class="flex items-center">
     <a href="{{ shop.url }}" class="block mx-2">
       <svg class="h-8 w-24 text-white" alt="logo">
-        <use href="{{ 'logo.svg#logo' | asset_url }}" />
+        <use href="{{ 'symbols.svg' | asset_url }}#logo" />
       </svg>
+      <!-- <img class="text-white" height="32" width="96" src="{{ 'logo.svg' | asset_url }}" /> -->
     </a>
   </div>
   
@@ -44,7 +45,7 @@
       <details class="mx-2 open:overflow-visible">
         <summary>
           <svg class="h-6 w-6 text-white" alt="search">
-            <use href="{{ 'symbols.svg#search' | asset_url }}" />
+            <use href="{{ 'symbols.svg' | asset_url }}#search" />
           </svg>
           <span class="sr-only">Search</span>
         </summary>
@@ -55,7 +56,7 @@
       <details class="mx-2 relative open:overflow-visible">
         <summary>
           <svg class="h-6 w-6 text-white" alt="account">
-            <use href="{{ 'symbols.svg#account' | asset_url }}" />
+            <use href="{{ 'symbols.svg' | asset_url }}#account" />
           </svg>
           <span class="sr-only">Account</span>
         </summary>
@@ -66,7 +67,7 @@
       <details data-cart-drawer-details class="static mx-2 open:overflow-visible z-20">
         <summary>
           <svg class="h-6 w-6 text-white" alt="cart">
-            <use href="{{ 'symbols.svg#cart' | asset_url }}" />
+            <use href="{{ 'symbols.svg' | asset_url }}#cart" />
           </svg>
           <span class="sr-only">Cart</span>
         </summary>
