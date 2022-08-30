@@ -57,7 +57,7 @@ export class CartService {
     }
 
     clearCart = async (): Promise<void> => {
-        fetch(this.shopUrl + "/cart/clear");
+        await fetch(this.shopUrl + "/cart/clear");
     }
 
     getCart = async (): Promise<any> => {
@@ -90,14 +90,14 @@ export class CartService {
         return cart.total_price;
     }
 
-    getProductData = async (id: string): Promise<any> => {
-        console.log(id);
-        const product: any = await fetch(this.shopUrl + `/products/${id}.js`, {
+    getProductData = async (handle: string): Promise<any> => {
+        console.log(handle);
+        const product: any = await fetch(this.shopUrl + `/products/${handle}.js`, {
             method: "GET",
             headers: {
                 'Content-Type': 'application/json'
               }
-        }).then(res => res.json()).catch(err => err);
+        }).then(res => res.json()).then(data => data).catch(err => err);
 
         return await product;
     }

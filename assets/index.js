@@ -426,7 +426,7 @@ var __classPrivateFieldSet = undefined && undefined.__classPrivateFieldSet || fu
   return kind === "a" ? f.call(receiver, value) : f ? f.value = value : state.set(receiver, value), value;
 };
 
-var _ProductForm_testButton, _ProductForm_form, _ProductForm_cartDrawerDetails, _ProductForm_productId, _ProductForm_productObject, _ProductForm_product, _ProductForm_variantId, _ProductForm_variantStock, _ProductForm_variantOptions, _ProductForm_decrementQuantityButton, _ProductForm_incrementQuantityButton, _ProductForm_quantityInput, _ProductForm_runTest, _ProductForm_handleChange, _ProductForm_handleSubmit, _ProductForm_initProductQuantity, _ProductForm_destroyProductQuantity, _ProductForm_incrementQuantity, _ProductForm_decrementQuantity;
+var _ProductForm_testButton, _ProductForm_form, _ProductForm_cartDrawerDetails, _ProductForm_productId, _ProductForm_productHandle, _ProductForm_productObject, _ProductForm_product, _ProductForm_variantId, _ProductForm_variantStock, _ProductForm_variantOptions, _ProductForm_decrementQuantityButton, _ProductForm_incrementQuantityButton, _ProductForm_quantityInput, _ProductForm_runTest, _ProductForm_handleChange, _ProductForm_handleSubmit, _ProductForm_initProductQuantity, _ProductForm_destroyProductQuantity, _ProductForm_incrementQuantity, _ProductForm_decrementQuantity;
 
 
 class ProductForm extends HTMLElement {
@@ -440,6 +440,8 @@ class ProductForm extends HTMLElement {
     _ProductForm_cartDrawerDetails.set(this, void 0);
 
     _ProductForm_productId.set(this, void 0);
+
+    _ProductForm_productHandle.set(this, void 0);
 
     _ProductForm_productObject.set(this, void 0);
 
@@ -530,11 +532,13 @@ class ProductForm extends HTMLElement {
 
     __classPrivateFieldSet(this, _ProductForm_productId, this.dataset.productId, "f");
 
+    __classPrivateFieldSet(this, _ProductForm_productHandle, this.dataset.handle, "f");
+
     __classPrivateFieldSet(this, _ProductForm_variantId, Number(this.dataset.defaultVariantId), "f");
 
     __classPrivateFieldSet(this, _ProductForm_cartDrawerDetails, document.querySelector("[data-cart-drawer-details]"), "f");
 
-    __classPrivateFieldSet(this, _ProductForm_productObject, _services_common_cartService__WEBPACK_IMPORTED_MODULE_0__["default"].getProductData(__classPrivateFieldGet(this, _ProductForm_productId, "f")), "f");
+    __classPrivateFieldSet(this, _ProductForm_productObject, _services_common_cartService__WEBPACK_IMPORTED_MODULE_0__["default"].getProductData(__classPrivateFieldGet(this, _ProductForm_productHandle, "f")), "f");
 
     __classPrivateFieldGet(this, _ProductForm_initProductQuantity, "f").call(this);
 
@@ -547,7 +551,7 @@ class ProductForm extends HTMLElement {
   }
 
 }
-_ProductForm_testButton = new WeakMap(), _ProductForm_form = new WeakMap(), _ProductForm_cartDrawerDetails = new WeakMap(), _ProductForm_productId = new WeakMap(), _ProductForm_productObject = new WeakMap(), _ProductForm_product = new WeakMap(), _ProductForm_variantId = new WeakMap(), _ProductForm_variantStock = new WeakMap(), _ProductForm_variantOptions = new WeakMap(), _ProductForm_decrementQuantityButton = new WeakMap(), _ProductForm_incrementQuantityButton = new WeakMap(), _ProductForm_quantityInput = new WeakMap(), _ProductForm_runTest = new WeakMap(), _ProductForm_handleChange = new WeakMap(), _ProductForm_handleSubmit = new WeakMap(), _ProductForm_initProductQuantity = new WeakMap(), _ProductForm_destroyProductQuantity = new WeakMap(), _ProductForm_incrementQuantity = new WeakMap(), _ProductForm_decrementQuantity = new WeakMap();
+_ProductForm_testButton = new WeakMap(), _ProductForm_form = new WeakMap(), _ProductForm_cartDrawerDetails = new WeakMap(), _ProductForm_productId = new WeakMap(), _ProductForm_productHandle = new WeakMap(), _ProductForm_productObject = new WeakMap(), _ProductForm_product = new WeakMap(), _ProductForm_variantId = new WeakMap(), _ProductForm_variantStock = new WeakMap(), _ProductForm_variantOptions = new WeakMap(), _ProductForm_decrementQuantityButton = new WeakMap(), _ProductForm_incrementQuantityButton = new WeakMap(), _ProductForm_quantityInput = new WeakMap(), _ProductForm_runTest = new WeakMap(), _ProductForm_handleChange = new WeakMap(), _ProductForm_handleSubmit = new WeakMap(), _ProductForm_initProductQuantity = new WeakMap(), _ProductForm_destroyProductQuantity = new WeakMap(), _ProductForm_incrementQuantity = new WeakMap(), _ProductForm_decrementQuantity = new WeakMap();
 ProductForm.NAME = "product-form";
 customElements.define(ProductForm.NAME, ProductForm);
 
@@ -834,7 +838,7 @@ class CartService {
     });
 
     this.clearCart = () => __awaiter(this, void 0, void 0, function* () {
-      fetch(this.shopUrl + "/cart/clear");
+      yield fetch(this.shopUrl + "/cart/clear");
     });
 
     this.getCart = () => __awaiter(this, void 0, void 0, function* () {
@@ -866,14 +870,14 @@ class CartService {
       return cart.total_price;
     });
 
-    this.getProductData = id => __awaiter(this, void 0, void 0, function* () {
-      console.log(id);
-      const product = yield fetch(this.shopUrl + `/products/${id}.js`, {
+    this.getProductData = handle => __awaiter(this, void 0, void 0, function* () {
+      console.log(handle);
+      const product = yield fetch(this.shopUrl + `/products/${handle}.js`, {
         method: "GET",
         headers: {
           'Content-Type': 'application/json'
         }
-      }).then(res => res.json()).catch(err => err);
+      }).then(res => res.json()).then(data => data).catch(err => err);
       return yield product;
     }); // dotenv.config();
 
