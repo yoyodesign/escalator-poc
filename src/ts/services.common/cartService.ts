@@ -1,3 +1,5 @@
+// import * as dotenv from 'dotenv';
+
 interface CartItem {
     id: number;
     quantity: number;
@@ -18,11 +20,12 @@ export class CartService {
     #locale: string = "/en-GB";
 
     constructor() {
+        // dotenv.config();
     }
 
     addProducts = (items: CartItem[]): void => {
         console.log("add products:", items);
-        fetch(this.shopUrl + "/cart/add.js", {
+        fetch(process.env.shop + "/cart/add.js", {
             method: "POST",
             headers: {
                 'Content-Type': 'application/json'
@@ -85,6 +88,18 @@ export class CartService {
         }).then(res => res.json()).then(data => data).catch(err => err);
 
         return cart.total_price;
+    }
+
+    getProductData = async (id: string): Promise<any> => {
+        console.log(id);
+        const product: any = await fetch(this.shopUrl + `/products/${id}.js`, {
+            method: "GET",
+            headers: {
+                'Content-Type': 'application/json'
+              }
+        }).then(res => res.json()).catch(err => err);
+
+        return await product;
     }
 }
 

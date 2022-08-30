@@ -7,8 +7,9 @@ export default class ProductForm extends HTMLElement {
 
     #form: HTMLFormElement;
     #cartDrawerDetails: HTMLDetailsElement;
-    #productId: number;
+    #productId: string;
     #productObject: any;
+    #product: any;
 
     #variantId: number;
     #variantStock: number = 6;
@@ -22,24 +23,15 @@ export default class ProductForm extends HTMLElement {
         this.#testButton = this.querySelector("[data-test-button]");
         this.#testButton.addEventListener("click", this.#runTest);
         this.#form = this.querySelector("form");
-        this.#productId = Number(this.dataset.productId);
+        this.#productId = this.dataset.productId;
+
         this.#variantId = Number(this.dataset.defaultVariantId);
         this.#cartDrawerDetails = document.querySelector("[data-cart-drawer-details]");
 
-        this.#productObject = fetch(`${cartService.shopUrl}/product?id=${this.#productId}`, 
-                {
-                    method: "GET",
-                    headers: {
-                        'Content-Type': 'application/json'
-                    }
-                }).then(res => res.json()).then(data => data).catch(err => err);;
+        this.#productObject = cartService.getProductData(this.#productId);
 
 
-
-        //product quantity
         this.#initProductQuantity();
-
-        console.log(this.#variantId);
 
        this.#form.onsubmit = this.#handleSubmit;
        this.#form.onchange = this.#handleChange
