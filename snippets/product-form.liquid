@@ -18,6 +18,7 @@
     data-locale="{{ shop_locale }}"
     data-cart-url="{{ routes.cart_url }}"
     data-next-var="{{ product.variants[1].id }}"
+    data-product-object='{{ product | json }}'
     >
     <button class="button" data-test-button>TEST</button>
 

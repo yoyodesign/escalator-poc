@@ -1,10 +1,7 @@
 <div class="fixed top-0 inset-x-0 h-12 bg-black text-white flex justify-between">
   <div class="flex items-center">
     <a href="{{ shop.url }}" class="block mx-2">
-      <svg class="h-8 w-24 text-white" alt="logo">
-        <use href="https:{{ 'symbols.svg' | asset_url }}#logo" cross-origin />
-      </svg>
-      <!-- <img class="text-white" height="32" width="96" src="{{ 'logo.svg' | asset_url }}" /> -->
+      {% render 'symbols', id: 'logo', classes: 'h-8 w-24 text-white', alt='logo' %}
     </a>
   </div>
   
@@ -44,9 +41,7 @@
     <li class="mx-2">
       <details class="mx-2 open:overflow-visible">
         <summary>
-          <svg class="h-6 w-6 text-white" alt="search">
-            <use href="{{ 'symbols.svg' | asset_url }}#search" />
-          </svg>
+          {% render 'symbols', id: 'search', classes: 'h-6 w-6 text-white', alt='search' %}
           <span class="sr-only">Search</span>
         </summary>
         {% render "search-bar" %}
@@ -55,9 +50,7 @@
     <li class="mx-2 relative">
       <details class="mx-2 relative open:overflow-visible">
         <summary>
-          <svg class="h-6 w-6 text-white" alt="account">
-            <use href="{{ 'symbols.svg' | asset_url }}#account" />
-          </svg>
+          {% render 'symbols', id: 'account', classes: 'h-6 w-6 text-white', alt='account' %}
           <span class="sr-only">Account</span>
         </summary>
         {% render "account-menu" %}
@@ -66,9 +59,7 @@
     <li class="mx-2">
       <details data-cart-drawer-details class="static mx-2 open:overflow-visible z-20">
         <summary>
-          <svg class="h-6 w-6 text-white" alt="cart">
-            <use href="{{ 'symbols.svg' | asset_url }}#cart" />
-          </svg>
+          {% render 'symbols', id: 'cart', classes: 'h-6 w-6 text-white', alt='cart' %}
           <span class="sr-only">Cart</span>
         </summary>
         {% render "cart-drawer" %}
